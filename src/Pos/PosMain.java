@@ -228,7 +228,6 @@ public class PosMain {
     // 카테고리 관리 메뉴
     static void categoryManagementMenu(Scanner sc) throws SQLException {
     	
-        boolean run = true;
         
         while (true) {
             System.out.println("\n카테고리 -----------------------------------------------------------");
@@ -236,12 +235,14 @@ public class PosMain {
             System.out.println("--------------------------------------------------------------------");
             System.out.println("<카테고리>");
             List<CategoryVO> categories = CategoryDAO.getAllCategories();
-            for (CategoryVO c : categories) {
-                System.out.println(c.getId() + " - 이모티콘(" + c.getEmoji() + "), 이름(" + c.getName() + "), 설명(" + c.getDescription() + ")");
+
+            for (int i =0; i<categories.size(); i++) {
+                System.out.println(categories.get(i).getId() + " - 이모티콘(" + categories.get(i).getEmoji() + "), "
+                					+ "이름(" + categories.get(i).getName() + "), 설명(" + categories.get(i).getDescription() + ")");
             }
+            
             System.out.print("\n[카테고리 번호를 입력해주세요]        * 0번 상위메뉴\n카테고리 번호 : ");
             int sub = sc.nextInt();
-            if (sub == 0) break;
             switch (sub) {
                 case 1:
                     System.out.println("\n등록 ..............................................................");
@@ -260,7 +261,7 @@ public class PosMain {
                     System.out.println("\n수정 ..............................................................");
                     System.out.println("위치 : 홈 > 카테고리 > 수정");
                     System.out.print("카테고리번호 : ");
-                    int catId = sc.nextInt(); // 카테고리 번호
+                    int catId = sc.nextInt(); // 카테고리 번호 (?)
                     sc.nextLine(); 
                     System.out.print("1. 이모티콘 : ");
                     String newEmoji = sc.nextLine();
@@ -280,12 +281,8 @@ public class PosMain {
                     System.out.println("<삭제되었습니다.>");
                     break;
 				case 0:
-					System.out.println("**************************************************************");
-					System.out.println("                            프로그램 종료                        ");
-					System.out.println("**************************************************************");
 					
-					run = false;
-					break;
+					return;
 					
                 default:
                     System.out.println("잘못된 입력입니다.");
