@@ -1,5 +1,5 @@
 package com.javaex.ex01;
 
-public class Pos {
+public class Category {
 
 }
