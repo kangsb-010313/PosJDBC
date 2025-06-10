@@ -15,7 +15,8 @@ public class PosMain {
             System.out.println("      1. 주문 / 결제      2. 매출      3. 메뉴      4. 카테고리");
             System.out.println("====================================================================");
             System.out.print("[시작메뉴 번호를 입력해주세요]        * 0번 프로그램 종료\n시작메뉴 번호 : ");
-            int choice = readInt(sc); // nextInt() 대신 readInt() 사용
+            int choice = sc.nextInt(); // nextInt() 대신 readInt() 사용
+            
             try {
                 switch (choice) {
                     case 0:
@@ -38,6 +39,7 @@ public class PosMain {
                     default:
                         System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
                 }
+                
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -45,15 +47,15 @@ public class PosMain {
     }
 
     // 숫자 입력 시 nextInt() 대신 사용 (입력 꼬임 방지)
-    private static int readInt(Scanner sc) {
-        while (true) {
-            try {
-                return Integer.parseInt(sc.nextLine());
-            } catch (NumberFormatException e) {
-                System.out.print("숫자를 입력해주세요: ");
-            }
-        }
-    }
+//    private static int readInt(Scanner sc) {
+//        while (true) {
+//            try {
+//                return Integer.parseInt(sc.nextLine());
+//            } catch (NumberFormatException e) {
+//                System.out.print("숫자를 입력해주세요: ");
+//            }
+//        }
+//    }
 
     /*
     
@@ -238,12 +240,13 @@ public class PosMain {
                 System.out.println(c.getId() + " - 이모티콘(" + c.getEmoji() + "), 이름(" + c.getName() + "), 설명(" + c.getDescription() + ")");
             }
             System.out.print("\n[카테고리 번호를 입력해주세요]        * 0번 상위메뉴\n카테고리 번호 : ");
-            int sub = readInt(sc);
+            int sub = sc.nextInt();
             if (sub == 0) break;
             switch (sub) {
                 case 1:
                     System.out.println("\n등록 ..............................................................");
                     System.out.println("위치 : 홈 > 카테고리 > 등록");
+                    sc.nextLine(); 
                     System.out.print("1. 이모티콘 : ");
                     String emoji = sc.nextLine();
                     System.out.print("2. 이 름 : ");
@@ -257,7 +260,8 @@ public class PosMain {
                     System.out.println("\n수정 ..............................................................");
                     System.out.println("위치 : 홈 > 카테고리 > 수정");
                     System.out.print("카테고리번호 : ");
-                    int catId = sc.nextInt();
+                    int catId = sc.nextInt(); // 카테고리 번호
+                    sc.nextLine(); 
                     System.out.print("1. 이모티콘 : ");
                     String newEmoji = sc.nextLine();
                     System.out.print("2. 이 름 : ");
@@ -271,7 +275,7 @@ public class PosMain {
                     System.out.println("\n삭제 ..............................................................");
                     System.out.println("위치 : 홈 > 카테고리 > 삭제");
                     System.out.print("카테고리번호 : ");
-                    int delId = readInt(sc);
+                    int delId = sc.nextInt();
                     CategoryDAO.deleteCategory(delId);
                     System.out.println("<삭제되었습니다.>");
                     break;
