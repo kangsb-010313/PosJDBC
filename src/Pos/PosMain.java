@@ -1,6 +1,8 @@
 package Pos;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -14,8 +16,18 @@ public class PosMain {
             System.out.println("\n시작메뉴 ===========================================================");
             System.out.println("      1. 주문 / 결제      2. 매출      3. 메뉴      4. 카테고리");
             System.out.println("====================================================================");
-            System.out.print("[시작메뉴 번호를 입력해주세요]        * 0번 프로그램 종료\n시작메뉴 번호 : ");
-            int choice = sc.nextInt(); // nextInt() 대신 readInt() 사용
+
+            int choice; 
+            
+            try{
+                System.out.print("[시작메뉴 번호를 입력해주세요]        * 0번 프로그램 종료\n시작메뉴 번호 : ");
+                choice = sc.nextInt();
+            
+        	}catch(InputMismatchException e) {
+            System.out.println("잘못된 입력입니다. 숫자를 입력해주세요.");
+            sc.nextLine(); // 잘못된 입력 버리기
+            continue; // 다시 입력받기
+            }
             
             try {
                 switch (choice) {
@@ -228,21 +240,39 @@ public class PosMain {
     // 카테고리 관리 메뉴
     static void categoryManagementMenu(Scanner sc) throws SQLException {
     	
+    	CategoryDAO categoryDao = new CategoryDAO();
         
         while (true) {
             System.out.println("\n카테고리 -----------------------------------------------------------");
             System.out.println("      1. 등록                   2. 수정                   3. 삭제");
             System.out.println("--------------------------------------------------------------------");
             System.out.println("<카테고리>");
-            List<CategoryVO> categories = CategoryDAO.getAllCategories();
+            
+            //List<CategoryVO> categories = new ArrayList();
 
-            for (int i =0; i<categories.size(); i++) {
+//            for (int i =0; i<categories.size(); i++) {
+//                System.out.println(categories.get(i).getId() + " - 이모티콘(" + categories.get(i).getEmoji() + "), "
+//                					+ "이름(" + categories.get(i).getName() + "), 설명(" + categories.get(i).getDescription() + ")");
+//            }
+            List<CategoryVO> categories = categoryDao.getAllCategories();
+            
+            for (int i = 0; i < categories.size(); i++) {
                 System.out.println(categories.get(i).getId() + " - 이모티콘(" + categories.get(i).getEmoji() + "), "
-                					+ "이름(" + categories.get(i).getName() + "), 설명(" + categories.get(i).getDescription() + ")");
+                    + "이름(" + categories.get(i).getName() + "), 설명(" + categories.get(i).getDescription() + ")");
             }
             
-            System.out.print("\n[카테고리 번호를 입력해주세요]        * 0번 상위메뉴\n카테고리 번호 : ");
-            int sub = sc.nextInt();
+            int sub;
+            
+            try{
+                System.out.print("\n[카테고리 번호를 입력해주세요]        * 0번 상위메뉴\n카테고리 번호 : ");      
+                sub = sc.nextInt();
+            
+        	}catch(InputMismatchException e) {
+            System.out.println("잘못된 입력입니다. 숫자를 입력해주세요.");
+            sc.nextLine(); // 잘못된 입력 버리기
+            continue; // 다시 입력받기
+            }
+            
             switch (sub) {
                 case 1:
                     System.out.println("\n등록 ..............................................................");
@@ -254,7 +284,7 @@ public class PosMain {
                     String name = sc.nextLine();
                     System.out.print("3. 설 명 : ");
                     String desc = sc.nextLine();
-                    CategoryDAO.categoryInsert(emoji, name, desc);
+                    categoryDao.categoryInsert(emoji, name, desc);
                     System.out.println("<등록되었습니다.>");
                     break;
                 case 2:
@@ -269,7 +299,7 @@ public class PosMain {
                     String newName = sc.nextLine();
                     System.out.print("3. 설 명 : ");
                     String newDesc = sc.nextLine();
-                    CategoryDAO.updateCategory(catId, newEmoji, newName, newDesc);
+                    categoryDao.updateCategory(catId, newEmoji, newName, newDesc);
                     System.out.println("<수정되었습니다.>");
                     break;
                 case 3:
@@ -277,7 +307,7 @@ public class PosMain {
                     System.out.println("위치 : 홈 > 카테고리 > 삭제");
                     System.out.print("카테고리번호 : ");
                     int delId = sc.nextInt();
-                    CategoryDAO.deleteCategory(delId);
+                    categoryDao.deleteCategory(delId);
                     System.out.println("<삭제되었습니다.>");
                     break;
 				case 0:
