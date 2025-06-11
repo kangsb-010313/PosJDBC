@@ -12,17 +12,17 @@ import java.util.List;
 //카테고리 데이터베이스 접근을 담당하는 클래스
 public class CategoryDAO {
 	
-    private Connection conn = null;
-    private PreparedStatement pstmt = null;
-    private Statement stmt = null; // getAllCategories에서 Statement 사용
-    private ResultSet rs = null;
+    private Connection conn = null; // 데이터베이스 연결 객체
+    private PreparedStatement pstmt = null; // SQL 쿼리 실행 객체
+    private Statement stmt = null; //SQL 쿼리 실행 객체 (전체 조회 등)/ getAllCategories에서 Statement 사용
+    private ResultSet rs = null; // 쿼리 결과 저장 객체
 	
     private static final String driver = "com.mysql.cj.jdbc.Driver";
     static final String db_url = "jdbc:mysql://localhost:3306/pos_db";
     static final String user = "pos";
     static final String pass = "pos";
 	
-	
+    // 데이터베이스 연결 메소드
 	private void connect() {
 
 		try {
@@ -39,7 +39,7 @@ public class CategoryDAO {
 	}
 	
 
-	// 자원 정리 메소드
+	// 자원 정리 메소드 (리소스 해제)
 	private void close() {
 
 		// 5. 자원정리
