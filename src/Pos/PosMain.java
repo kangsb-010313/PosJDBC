@@ -289,9 +289,21 @@ public class PosMain {
                 case 2:
                     System.out.println("\n수정 ..............................................................");
                     System.out.println("위치 : 홈 > 카테고리 > 수정");
-                    System.out.print("카테고리번호 : ");
-                    int catId = sc.nextInt(); // 카테고리 번호 (?)
-                    sc.nextLine(); 
+                    
+                    int catId;
+                    
+                    while (true) {
+                        try {
+                            System.out.print("카테고리번호 : ");
+                            catId = sc.nextInt();
+                            sc.nextLine(); // 입력 버퍼 비우기
+                            break;
+                        } catch (InputMismatchException e) {
+                            System.out.println("잘못된 입력입니다. 숫자를 입력해주세요.");
+                            sc.nextLine(); // 잘못된 입력 버리기
+                        }
+                    }
+                    
                     System.out.print("1. 이모티콘 : ");
                     String newEmoji = sc.nextLine();
                     System.out.print("2. 이 름 : ");
@@ -304,8 +316,21 @@ public class PosMain {
                 case 3:
                     System.out.println("\n삭제 ..............................................................");
                     System.out.println("위치 : 홈 > 카테고리 > 삭제");
-                    System.out.print("카테고리번호 : ");
-                    int delId = sc.nextInt();
+                    
+                    int delId ;
+                    
+                    while (true) {
+                        try {
+                            System.out.print("카테고리번호 : ");
+                            delId = sc.nextInt();
+                            sc.nextLine(); // 입력 버퍼 비우기
+                            break;
+                        } catch (InputMismatchException e) {
+                            System.out.println("잘못된 입력입니다. 숫자를 입력해주세요.");
+                            sc.nextLine(); // 잘못된 입력 버리기
+                        }
+                    }
+                    
                     categoryDao.deleteCategory(delId);
                     System.out.println("<삭제되었습니다.>");
                     break;
