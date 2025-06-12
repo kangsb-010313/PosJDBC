@@ -10,14 +10,10 @@ import pospro.vo.CategoryVO;
 
 public class CategoryProgram {
 
-	// 필드
-
-	// 생성자
+	CategoryDAO categoryDao = new CategoryDAO();
 
 	// 메소드
 	public void categoryManagementMenu(Scanner sc) throws SQLException {
-
-		CategoryDAO categoryDao = new CategoryDAO();
 
 		while (true) {
 			System.out.println("\n카테고리 -----------------------------------------------------------");
@@ -47,17 +43,17 @@ public class CategoryProgram {
 
 			switch (sub) {
 			case 1:
-				this.insertCategory(sc, categoryDao);
+				this.insertCategory(sc);
 				break;
 
 			case 2:
 				
-				this.updateCategory(sc, categoryDao);
+				this.updateCategory(sc);
 				break;
 
 			case 3:
 				
-				this.deleteCategory(sc, categoryDao);
+				this.deleteCategory(sc);
 				break;
 
 			case 0:
@@ -71,7 +67,7 @@ public class CategoryProgram {
 	}
 	
 	//카테고리 등록
-	public void insertCategory(Scanner sc, CategoryDAO categoryDao) throws SQLException {
+	public void insertCategory(Scanner sc) throws SQLException {
 		System.out.println("\n등록 ..............................................................");
 		System.out.println("위치 : 홈 > 카테고리 > 등록");
 		sc.nextLine();
@@ -87,7 +83,7 @@ public class CategoryProgram {
 	}
 	
 	//카테고리 수정
-	public void updateCategory(Scanner sc, CategoryDAO categoryDao) throws SQLException {
+	public void updateCategory(Scanner sc) throws SQLException {
 		System.out.println("\n수정 ..............................................................");
 		System.out.println("위치 : 홈 > 카테고리 > 수정");
 
@@ -119,7 +115,7 @@ public class CategoryProgram {
 	}
 	
 	//카테고리 삭제
-	public void deleteCategory(Scanner sc, CategoryDAO categoryDao) throws SQLException {
+	public void deleteCategory(Scanner sc) throws SQLException {
 		System.out.println("\n삭제 ..............................................................");
 		System.out.println("위치 : 홈 > 카테고리 > 삭제");
 
