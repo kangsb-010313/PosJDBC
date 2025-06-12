@@ -1,5 +1,5 @@
 
-package Pos_new;
+package pos_new;
 
 public class MenuVO {
 	private int id;

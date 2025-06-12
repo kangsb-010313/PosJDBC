@@ -1,5 +1,5 @@
 
-package Pos_new;
+package pos_new;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

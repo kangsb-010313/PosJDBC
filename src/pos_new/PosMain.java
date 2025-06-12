@@ -1,10 +1,11 @@
 
-package Pos_new;
+package pos_new;
 
 import java.sql.SQLException;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
+
 
 public class PosMain { // 프로그램의 시작점
 	public static void main(String[] args) {

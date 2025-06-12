@@ -1,5 +1,5 @@
 
-package Pos_new;
+package pos_new;
 
 //주문 정보 저장
 public class OrderVO {

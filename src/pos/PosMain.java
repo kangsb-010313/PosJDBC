@@ -1,4 +1,4 @@
-package Pos;
+package pos;
 
 import java.sql.SQLException;
 import java.util.InputMismatchException;
