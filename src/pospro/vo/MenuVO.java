@@ -1,5 +1,5 @@
 
-package pospro;
+package pospro.vo;
 
 public class MenuVO {
 	private int id;

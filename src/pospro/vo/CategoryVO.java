@@ -1,4 +1,4 @@
-package pos;
+package pospro.vo;
 
 //카테고리 정보 저장
 public class CategoryVO {
