@@ -1,5 +1,4 @@
-
-package pos_new;
+package pospro;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -19,9 +18,9 @@ public class CategoryDAO {
 	private ResultSet rs = null;
 
 	private static final String driver = "com.mysql.cj.jdbc.Driver";
-	static final String db_url = "jdbc:mysql://localhost:3306/pos_db";
-	static final String user = "pos";
-	static final String pass = "pos";
+	static final String db_url = "jdbc:mysql://localhost:3306/web_db";
+	static final String user = "web";
+	static final String pass = "web";
 
 	private void connect() {
 

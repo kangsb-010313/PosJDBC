@@ -1,4 +1,5 @@
-package pos_new;
+
+package pospro;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -17,9 +18,9 @@ public class MenuDAO {
 	private ResultSet rs = null;
 
 	private String driver = "com.mysql.cj.jdbc.Driver";
-	private String url = "jdbc:mysql://localhost:3306/pos_db";
-	private String id = "pos";
-	private String pw = "pos";
+	private String url = "jdbc:mysql://localhost:3306/web_db";
+	private String id = "web";
+	private String pw = "web";
 
 	// 생성자
 	public MenuDAO() {}
