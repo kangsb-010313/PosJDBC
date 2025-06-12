@@ -1,3 +1,4 @@
+
 package pospro;
 
 import java.sql.Connection;
@@ -18,9 +19,9 @@ public class CategoryDAO {
 	private ResultSet rs = null;
 
 	private static final String driver = "com.mysql.cj.jdbc.Driver";
-	static final String db_url = "jdbc:mysql://localhost:3306/pos_db";
-	static final String user = "pos";
-	static final String pass = "pos";
+	static final String db_url = "jdbc:mysql://localhost:3306/web_db";
+	static final String user = "web";
+	static final String pass = "web";
 
 	private void connect() {
 
@@ -105,7 +106,8 @@ public class CategoryDAO {
 		this.connect();
 
 		try {
-			String query = " select * from category ";
+			String query = " select * "
+						 + " from category ";
 					stmt = conn.createStatement();
 					  rs = stmt.executeQuery(query);
 

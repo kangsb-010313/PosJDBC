@@ -17,9 +17,9 @@ public class OrderDAO {
 	private ResultSet rs = null;
 	
 	private final String driver = "com.mysql.cj.jdbc.Driver";
-	private final String url = "jdbc:mysql://localhost:3306/pos_db";
-	private final String id = "pos";
-	private final String pw = "pos";
+	private final String url = "jdbc:mysql://localhost:3306/web_db";
+	private final String id = "web";
+	private final String pw = "web";
 
 	// 생성자
 	public OrderDAO() {}
@@ -149,7 +149,9 @@ public class OrderDAO {
 		this.connect();
 
 		try {
-			String query = "SELECT * FROM orders WHERE ispaid = ?";
+			String query = " SELECT * "
+						 + " FROM orders "
+						 + " WHERE ispaid = ?";
 			pstmt = conn.prepareStatement(query);
 			pstmt.setBoolean(1, isPaid);
 			rs = pstmt.executeQuery();
@@ -180,7 +182,9 @@ public class OrderDAO {
 		this.connect();
 
 		try {
-			String query = "SELECT * FROM orders WHERE order_id = ?";
+			String query = " SELECT * "
+						 + " FROM orders "
+						 + " WHERE order_id = ? ";
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, orderId);
 			rs = pstmt.executeQuery();
@@ -210,7 +214,9 @@ public class OrderDAO {
 		this.connect();
 
 		try {
-			String query = "UPDATE orders SET quantity = ?, table_num = ? WHERE order_id = ?";
+			String query = " UPDATE orders "
+						 + " SET quantity = ?, table_num = ? "
+						 + " WHERE order_id = ?";
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, quantity);
 			pstmt.setInt(2, tableNum);
@@ -232,7 +238,9 @@ public class OrderDAO {
 		this.connect();
 
 		try {
-			String query = "DELETE FROM orders WHERE order_id = ?";
+			String query = " DELETE "
+						 + " FROM orders "
+						 + " WHERE order_id = ?";
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, orderId);
 			count = pstmt.executeUpdate();
@@ -252,7 +260,9 @@ public class OrderDAO {
 		this.connect();
 
 		try {
-			String query = "UPDATE orders SET ispaid = TRUE WHERE order_id = ?";
+			String query = " UPDATE orders "
+						 + " SET ispaid = TRUE "
+						 + " WHERE order_id = ? ";
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, orderId);
 			count = pstmt.executeUpdate();
@@ -273,7 +283,9 @@ public class OrderDAO {
 		this.connect();
 
 		try {
-			String query = "UPDATE orders SET ispaid = TRUE WHERE table_num = ?";
+			String query = " UPDATE orders "
+						 + " SET ispaid = TRUE "
+						 + " WHERE table_num = ? ";
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, tableNum);
 			count = pstmt.executeUpdate();
