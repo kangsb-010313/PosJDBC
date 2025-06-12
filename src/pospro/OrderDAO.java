@@ -16,10 +16,10 @@ public class OrderDAO {
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
 	
-	private final String driver = "com.mysql.cj.jdbc.Driver";
-	private final String url = "jdbc:mysql://localhost:3306/pos_db";
-	private final String id = "pos";
-	private final String pw = "pos";
+	private String driver = "com.mysql.cj.jdbc.Driver";
+	private String url = "jdbc:mysql://localhost:3306/pos_db";
+	private String id = "pos";
+	private String pw = "pos";
 
 	// 생성자
 	public OrderDAO() {}

@@ -18,10 +18,10 @@ public class CategoryDAO {
 	private Statement stmt = null; // getAllCategories에서 Statement 사용
 	private ResultSet rs = null;
 
-	private static final String driver = "com.mysql.cj.jdbc.Driver";
-	static final String db_url = "jdbc:mysql://localhost:3306/pos_db";
-	static final String user = "pos";
-	static final String pass = "pos";
+	private String driver = "com.mysql.cj.jdbc.Driver";
+	static String db_url = "jdbc:mysql://localhost:3306/pos_db";
+	static String user = "pos";
+	static String pass = "pos";
 
 	private void connect() {
 
