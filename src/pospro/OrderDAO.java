@@ -17,9 +17,9 @@ public class OrderDAO {
 	private ResultSet rs = null;
 	
 	private final String driver = "com.mysql.cj.jdbc.Driver";
-	private final String url = "jdbc:mysql://localhost:3306/web_db";
-	private final String id = "web";
-	private final String pw = "web";
+	private final String url = "jdbc:mysql://localhost:3306/pos_db";
+	private final String id = "pos";
+	private final String pw = "pos";
 
 	// 생성자
 	public OrderDAO() {}
